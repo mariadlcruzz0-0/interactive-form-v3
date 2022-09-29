@@ -27,10 +27,8 @@ const _color = document.querySelector('#color');
 const _design = document.querySelector('#design');
 const colorSelector = _color.children;
 
-_color.disabled = true;
-
 _design.addEventListener('change', (e) => {
-    _color.disabled = false;
+    _color.enable = true;
 
     if( e.target.value === 'js puns') {
 
@@ -38,25 +36,32 @@ _design.addEventListener('change', (e) => {
     {
             if (colorSelector[i].getAttribute('data-theme') === 'heart js') {
                 colorSelector[i]. hidden = true;
-     } else if (colorSelector[i].getAttribute('data-theme') === 'js puns') {
-                colorSelector[i].hidden = false;
+        } else if (colorSelector[i].getAttribute('data-theme') === 'js puns') {
+                colorSelector[i]. hidden = false;
         } 
     }
-    }  else if ( e.target.value === 'heart js' ) {
+}  else if ( e.target.value === 'heart js' ) {
 
-        for ( let i = 0; i < colorSelector.length; i++) {
-            if(colorSelector[i].getAttribute('data-theme') === 'js puns') {
+        for ( let i = 0; i < colorSelector.length; i++ ) {
+
+            if (colorSelector[i].getAttribute('data-theme') === 'js puns') {
                 colorSelector[i]. hidden = true;
-            } else if (colorSelector[i].getAttribute('data-theme' === 'heart js')) {
-                colorSelector[i] .hidden = false;   
+            } else if (colorSelector[i].getAttribute('data-theme') === 'heart js') {
+                colorSelector[i]. hidden = false;   
             }
-        
         }
-
-}
-
+    }
 });
 
 /**
  * Register for Activities
  */
+const _activities = document.querySelector('#activities');
+const _activitiesCost = document.querySelector('#activities-cost');
+const totalCost = 0;
+
+_activities.addEventListener('checked', (e) => {
+    const activitySelected = e.target.checked;
+    const activityTotal = e.target;
+
+})
