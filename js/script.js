@@ -1,5 +1,5 @@
 /**
- * Interactive Form
+ * Interactive Form Project
  */
 
 const guest = document.querySelector('#name');
@@ -31,10 +31,32 @@ _color.disabled = true;
 
 _design.addEventListener('change', (e) => {
     _color.disabled = false;
-    
+
     if( e.target.value === 'js puns') {
-    
 
+        for ( let i = 0; i < colorSelector.length; i++ ) 
+    {
+            if (colorSelector[i].getAttribute('data-theme') === 'heart js') {
+                colorSelector[i]. hidden = true;
+     } else if (colorSelector[i].getAttribute('data-theme') === 'js puns') {
+                colorSelector[i].hidden = false;
+        } 
     }
+    }  else if ( e.target.value === 'heart js' ) {
 
-})
+        for ( let i = 0; i < colorSelector.length; i++) {
+            if(colorSelector[i].getAttribute('data-theme') === 'js puns') {
+                colorSelector[i]. hidden = true;
+            } else if (colorSelector[i].getAttribute('data-theme' === 'heart js')) {
+                colorSelector[i] .hidden = false;   
+            }
+        
+        }
+
+}
+
+});
+
+/**
+ * Register for Activities
+ */
