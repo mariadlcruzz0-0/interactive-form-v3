@@ -56,10 +56,17 @@ _design.addEventListener('change', (e) => {
 /**
  * Register for Activities
  */
+const register = document.querySelector('fieldset');
+const activitiesCost = document.querySelector('#activities-cost');
+let total = 0;
 
-_activities.addEventListener('checked', (e) => {
-    const activitySelected = e.target.checked;
-    const activityTotal = parseInt(activitySelected.getAttribute('#activity-cost'));
+register.addEventListener('changed', (e) => {
+   
 
 
 })
+
+/**
+ * Payment Info
+ */
+
