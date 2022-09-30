@@ -25,12 +25,9 @@ jobRole.addEventListener('change', (e) => {
  */
 const _color = document.querySelectorAll('#color');
 const _color2 = document.getElementById('color');
-console.log(_color2);
-console.log(_color);
 const _design = document.querySelector('#design');
-//const colorSelector = _color.children;
 const colorSelector = document.querySelectorAll('#color option');
-console.log(colorSelector);
+
 _color.disabled = true;
 
 _design.addEventListener('change', (e) => {
@@ -99,4 +96,21 @@ _payment.addEventListener('change', (e) => {
         _paypal.style.display = 'none';
         _bitcoin.style.display = 'block';
     }
+})
+
+/**
+ * Form Validation
+ */
+
+const _form = document.getElementsByTagName('form');
+
+const _name = document.getElementById('name');
+const _email = document.getElementById('email');
+const _cardNumber = document.getElementById('cc-num');
+const _zipCode = document.getElementById('zip');
+const _cvv = document.getElementById('cvv');
+
+_form.addEventListener('submit', (e) => {
+
+    
 })
