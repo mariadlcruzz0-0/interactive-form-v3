@@ -56,12 +56,10 @@ _design.addEventListener('change', (e) => {
 /**
  * Register for Activities
  */
-const _activities = document.querySelector('#activities');
-const _activitiesCost = document.querySelector('#activities-cost');
-const totalCost = 0;
 
 _activities.addEventListener('checked', (e) => {
     const activitySelected = e.target.checked;
-    const activityTotal = e.target;
+    const activityTotal = parseInt(activitySelected.getAttribute('#activity-cost'));
+
 
 })
