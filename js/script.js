@@ -23,50 +23,80 @@ jobRole.addEventListener('change', (e) => {
 /**
  * T-Shit Info
  */
-const _color = document.querySelector('#color');
+const _color = document.querySelectorAll('#color');
+const _color2 = document.getElementById('color');
+console.log(_color2);
+console.log(_color);
 const _design = document.querySelector('#design');
-const colorSelector = _color.children;
+//const colorSelector = _color.children;
+const colorSelector = document.querySelectorAll('#color option');
+console.log(colorSelector);
+_color.disabled = true;
 
 _design.addEventListener('change', (e) => {
+    e.preventDefault();
     _color.enable = true;
-
-    if( e.target.value === 'js puns') {
-
-        for ( let i = 0; i < colorSelector.length; i++ ) 
-    {
-            if (colorSelector[i].getAttribute('data-theme') === 'heart js') {
-                colorSelector[i]. hidden = true;
-        } else if (colorSelector[i].getAttribute('data-theme') === 'js puns') {
-                colorSelector[i]. hidden = false;
+    for ( let i = 0; i < colorSelector.length; i++ ) {
+        let dataAttribute = colorSelector[i].getAttribute('data-theme');
+        let colorValue = e.target.value;
+        
+    if( colorValue === dataAttribute) {
+        colorSelector[i].hidden = false;
+        colorSelector[i].setAttribute('selected', true);
+    } else{
+                colorSelector[i].hidden = true;
+                colorSelector[i].removeAttribute('selected');
         } 
-    }
-}  else if ( e.target.value === 'heart js' ) {
-
-        for ( let i = 0; i < colorSelector.length; i++ ) {
-
-            if (colorSelector[i].getAttribute('data-theme') === 'js puns') {
-                colorSelector[i]. hidden = true;
-            } else if (colorSelector[i].getAttribute('data-theme') === 'heart js') {
-                colorSelector[i]. hidden = false;   
-            }
-        }
-    }
-});
+    }});
 
 /**
  * Register for Activities
  */
-const register = document.querySelector('fieldset');
-const activitiesCost = document.querySelector('#activities-cost');
+const register = document.querySelector('.activities');
+const activitiesCost = document.querySelector('p.activities-cost');
 let total = 0;
 
-register.addEventListener('changed', (e) => {
-   
+register.addEventListener('change', (e) => {
+    e.preventDefault();
+    let dataCost = parseInt(e.target.getAttribute('data-cost'));
 
-
+    if(e.target.checked){
+        total += dataCost;
+    } else if( !e.target.checked ) {
+        total -= dataCost;
+    }
+    activitiesCost.innerHTML = `Total: $${total}`
 })
 
 /**
  * Payment Info
  */
 
+const _payment = document.getElementById('payment');
+const _creditCard = document.getElementById('credit-card');
+const _paypal = document.getElementById('paypal');
+const _bitcoin = document.getElementById('bitcoin');
+
+_paypal.style.display = 'none';
+_bitcoin.style.display = 'none';
+
+_payment.children[1].setAttribute('selected', true);
+
+_payment.addEventListener('change', (e) => {
+    
+    if(e.target.value == 'credit-card'){
+        _creditCard.style.display = 'block';
+        _paypal.style.display = 'none';
+        _bitcoin.style.display = 'none';
+    }
+    if(e.target.value == 'paypal') {
+        _creditCard.style.display = 'none';
+        _paypal.style.display = 'block';
+        _bitcoin.style.display = 'none';
+    }
+    if(e.target.value == 'bitcoin') {
+        _creditCard.style.display = 'none';
+        _paypal.style.display = 'none';
+        _bitcoin.style.display = 'block';
+    }
+})
