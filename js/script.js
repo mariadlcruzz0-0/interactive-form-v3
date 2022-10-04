@@ -125,7 +125,21 @@ _form.addEventListener('submit', (e) => {
    //email validation
    let emailValue = _email.value;
    const emailTest = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
-    console.log(emailTest);
+    //console.log(emailTest);
 
+    //card validation
+    let cardValue = _cardNumber.value;
+    const cardTest = /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/.test(cardValue);
+    //console.log(cardTest);
+
+    //zipcode validation
+    let zipCodeValue = _zipCode.value;
+    const zipCodeTest = /^\d{5}$/.test(zipCodeValue);
+    //console.log(zipCodeTest);
+
+    //cvv validation
+    let cvvValue = _cvv.value;
+    const cvvTest = /^\d{3}$/.test(cvvValue);
+    console.log(cvvTest);
 });
 
