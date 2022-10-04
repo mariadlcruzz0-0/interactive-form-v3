@@ -21,7 +21,7 @@ jobRole.addEventListener('change', (e) => {
 });
 
 /**
- * T-Shit Info
+ * T-Shirt Info
  */
 const _color = document.querySelectorAll('#color');
 const _color2 = document.getElementById('color');
@@ -96,21 +96,36 @@ _payment.addEventListener('change', (e) => {
         _paypal.style.display = 'none';
         _bitcoin.style.display = 'block';
     }
-})
+});
 
 /**
  * Form Validation
  */
 
-const _form = document.getElementsByTagName('form');
+const _form = document.querySelector('form');
 
-const _name = document.getElementById('name');
-const _email = document.getElementById('email');
-const _cardNumber = document.getElementById('cc-num');
-const _zipCode = document.getElementById('zip');
-const _cvv = document.getElementById('cvv');
+const _name = document.querySelector('#name');
+const _email = document.querySelector('#email');
+const _cardNumber = document.querySelector('#cc-num');
+const _zipCode = document.querySelector('#zip');
+const _cvv = document.querySelector('#cvv');
+
+//  const nameValidator = () => {
+//     const name = _name.value;
+//     const nameValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(name);
+//  }
 
 _form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    //name validation
+   let nameValue = _name.value;
+   const nameTest = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);
+   //console.log(nameTest);
+   
+   //email validation
+   let emailValue = _email.value;
+   const emailTest = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
+    console.log(emailTest);
 
-    
-})
+});
+
