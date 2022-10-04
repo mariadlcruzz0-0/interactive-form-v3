@@ -143,3 +143,17 @@ _form.addEventListener('submit', (e) => {
     console.log(cvvTest);
 });
 
+/**
+ * Accessibility
+ */
+
+ const _checkbox = document.querySelectorAll('input[type=checkbox]');
+
+ document.querySelector('#checkbox').addEventListener('change', (e) => {
+    e.preventDefault();
+    let checkedBox = e.target.checked;
+    if (checkedBox = true) {
+        register.addEventListener('focus',)
+
+    }
+ })
