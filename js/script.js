@@ -114,10 +114,11 @@ const _cvv = document.querySelector('#cvv');
 function testInput(input,_input) {
     if(!input){
         _input.parentNode.classList.add('not-valid');
+        _input.parentNode.classList.remove('valid');
         _input.parentNode.lastElementChild.style.display = 'block';
        } else {
-        _input.parentNode.classList.remove('not-valid');
         _input.parentNode.classList.add('valid');
+        _input.parentNode.classList.remove('not-valid');
         _input.parentNode.lastElementChild.style.display = 'none';
        }
 };
@@ -126,10 +127,10 @@ _form.addEventListener('submit', (e) => {
     e.preventDefault();
     //name validation
    let nameValue = _name.value;
-   const nameTest = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);
+   const nameTest = /^[^\s][a-zA-z|\s]*$/i.test(nameValue);
    testInput(nameTest, _name);
    //console.log(nameTest);
-   
+
    //email validation
    let emailValue = _email.value;
    const emailTest = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
@@ -138,7 +139,7 @@ _form.addEventListener('submit', (e) => {
 
     //card validation
     let cardValue = _cardNumber.value;
-    const cardTest = /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/.test(cardValue);
+    const cardTest = /^\d{13,16}$/.test(cardValue);
     testInput(cardTest, _cardNumber);
     //console.log(cardTest);
 
@@ -153,6 +154,8 @@ _form.addEventListener('submit', (e) => {
     const cvvTest = /^\d{3}$/.test(cvvValue);
     testInput(cvvTest, _cvv);
     //console.log(cvvTest);
+
+   
 });
 /**
  * Accessibility
