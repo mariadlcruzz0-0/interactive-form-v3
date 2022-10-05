@@ -110,50 +110,61 @@ const _cardNumber = document.querySelector('#cc-num');
 const _zipCode = document.querySelector('#zip');
 const _cvv = document.querySelector('#cvv');
 
-//  const nameValidator = () => {
-//     const name = _name.value;
-//     const nameValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(name);
-//  }
+function testInput(input) {
+    if(!input){
+        input.parentNode.classList.add('not-valid');
+        input.parentNode.lastElementChild.style.display = 'block';
+       } else {
+        input.parentNode.classList.remove('not-valid');
+        input.parentNode.classList.add('valid');
+        input.parentNode.lastElementChild.style.display = 'none';
+       }
+}
 
 _form.addEventListener('submit', (e) => {
     e.preventDefault();
     //name validation
    let nameValue = _name.value;
    const nameTest = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);
+   testInput(_name);
    //console.log(nameTest);
    
    //email validation
    let emailValue = _email.value;
    const emailTest = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
+   testInput(_email);
     //console.log(emailTest);
 
     //card validation
     let cardValue = _cardNumber.value;
     const cardTest = /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/.test(cardValue);
+    testInput(_cardNumber);
     //console.log(cardTest);
 
     //zipcode validation
     let zipCodeValue = _zipCode.value;
     const zipCodeTest = /^\d{5}$/.test(zipCodeValue);
+    testInput(_zipCode);
     //console.log(zipCodeTest);
 
     //cvv validation
     let cvvValue = _cvv.value;
     const cvvTest = /^\d{3}$/.test(cvvValue);
-    console.log(cvvTest);
+    testInput(_cvv);
+    //console.log(cvvTest);
 });
-
 /**
  * Accessibility
  */
 
  const _checkbox = document.querySelectorAll('input[type=checkbox]');
 
- document.querySelector('#checkbox').addEventListener('change', (e) => {
-    e.preventDefault();
-    let checkedBox = e.target.checked;
-    if (checkedBox = true) {
-        register.addEventListener('focus',)
+_checkbox.forEach(activity => {
+    activity.addEventListener('focus', e => {
+        e.target.parentNode.classList.add('focus');
+    })
+    activity.addEventListener('blur', e => {
+        e.target.parentNode.classList.remove('focus');
+    })
+});
 
-    }
- })
