@@ -110,47 +110,49 @@ const _cardNumber = document.querySelector('#cc-num');
 const _zipCode = document.querySelector('#zip');
 const _cvv = document.querySelector('#cvv');
 
-function testInput(input) {
+//This Function validates that all the fields have been filled out before submitting
+
+function testInput(input,_input) {
     if(!input){
-        input.parentNode.classList.add('not-valid');
-        input.parentNode.lastElementChild.style.display = 'block';
+        _input.parentNode.classList.add('not-valid');
+        _input.parentNode.lastElementChild.style.display = 'block';
        } else {
-        input.parentNode.classList.remove('not-valid');
-        input.parentNode.classList.add('valid');
-        input.parentNode.lastElementChild.style.display = 'none';
+        _input.parentNode.classList.remove('not-valid');
+        _input.parentNode.classList.add('valid');
+        _input.parentNode.lastElementChild.style.display = 'none';
        }
-}
+};
 
 _form.addEventListener('submit', (e) => {
     e.preventDefault();
     //name validation
    let nameValue = _name.value;
    const nameTest = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);
-   testInput(_name);
+   testInput(nameTest, _name);
    //console.log(nameTest);
    
    //email validation
    let emailValue = _email.value;
    const emailTest = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
-   testInput(_email);
+   testInput(emailTest, _email);
     //console.log(emailTest);
 
     //card validation
     let cardValue = _cardNumber.value;
     const cardTest = /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/.test(cardValue);
-    testInput(_cardNumber);
+    testInput(cardTest, _cardNumber);
     //console.log(cardTest);
 
     //zipcode validation
     let zipCodeValue = _zipCode.value;
     const zipCodeTest = /^\d{5}$/.test(zipCodeValue);
-    testInput(_zipCode);
+    testInput(zipCodeTest, _zipCode);
     //console.log(zipCodeTest);
 
     //cvv validation
     let cvvValue = _cvv.value;
     const cvvTest = /^\d{3}$/.test(cvvValue);
-    testInput(_cvv);
+    testInput(cvvTest, _cvv);
     //console.log(cvvTest);
 });
 /**
