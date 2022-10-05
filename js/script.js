@@ -23,16 +23,15 @@ jobRole.addEventListener('change', (e) => {
 /**
  * T-Shirt Info
  */
-const _color = document.querySelectorAll('#color');
-const _color2 = document.getElementById('color');
+
+const _color = document.querySelector('#color');
 const _design = document.querySelector('#design');
 const colorSelector = document.querySelectorAll('#color option');
-
 _color.disabled = true;
 
 _design.addEventListener('change', (e) => {
     e.preventDefault();
-    _color.enable = true;
+    _color.disabled = false;
     for ( let i = 0; i < colorSelector.length; i++ ) {
         let dataAttribute = colorSelector[i].getAttribute('data-theme');
         let colorValue = e.target.value;
