@@ -64,6 +64,25 @@ register.addEventListener('change', (e) => {
     activitiesCost.innerHTML = `Total: $${total}`
 })
 
+// Validates that an activity was selected
+function validateActivities(e) 
+{
+    const checkboxes = register.querySelectorAll('[type="checkbox"]:checked');
+    console.log(checkboxes.length);
+    if(checkboxes.length == 0){
+        //not valid
+        register.classList.add('not-valid');
+        register.classList.remove('valid');
+        register.lastElementChild.style.display = 'block';
+        e.preventDefault();
+       } else {
+        //Valid
+        register.classList.add('valid');
+        register.classList.remove('not-valid');
+        register.lastElementChild.style.display = 'none';
+       }
+}
+
 /**
  * Payment Info
  */
@@ -111,13 +130,13 @@ const _cvv = document.querySelector('#cvv');
 
 //This Function validates that all the fields have been filled out before submitting
 
-function testInput(input,_input) {
+function testInput(input,_input, e) {
     if(!input){
         //not valid
         _input.parentNode.classList.add('not-valid');
         _input.parentNode.classList.remove('valid');
         _input.parentNode.lastElementChild.style.display = 'block';
-        //_input.preventDefault();
+        e.preventDefault();
        } else {
         //Valid
         _input.parentNode.classList.add('valid');
@@ -130,34 +149,36 @@ _form.addEventListener('submit', (e) => {
     //name validation
    let nameValue = _name.value;
    const nameTest = /^[^\s][a-zA-z|\s]*$/i.test(nameValue);
-   testInput(nameTest, _name);
+   testInput(nameTest, _name, e);
    //console.log(nameTest);
 
    //email validation
    let emailValue = _email.value;
    const emailTest = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
-   testInput(emailTest, _email);
+   testInput(emailTest, _email, e);
     //console.log(emailTest);
+    validateActivities(e);
 
-    //card validation
-    let cardValue = _cardNumber.value;
-    const cardTest = /^\d{13,16}$/.test(cardValue);
-    testInput(cardTest, _cardNumber);
-    //console.log(cardTest);
+    if(_payment.value === 'credit-card')
+    {
+        //card validation
+        let cardValue = _cardNumber.value;
+        const cardTest = /^\d{13,16}$/.test(cardValue);
+        testInput(cardTest, _cardNumber, e);
+        //console.log(cardTest);
 
-    //zipcode validation
-    let zipCodeValue = _zipCode.value;
-    const zipCodeTest = /^\d{5}$/.test(zipCodeValue);
-    testInput(zipCodeTest, _zipCode);
-    //console.log(zipCodeTest);
+        //zipcode validation
+        let zipCodeValue = _zipCode.value;
+        const zipCodeTest = /^\d{5}$/.test(zipCodeValue);
+        testInput(zipCodeTest, _zipCode, e);
+        //console.log(zipCodeTest);
 
-    //cvv validation
-    let cvvValue = _cvv.value;
-    const cvvTest = /^\d{3}$/.test(cvvValue);
-    testInput(cvvTest, _cvv);
-    //console.log(cvvTest);
-
-   
+        //cvv validation
+        let cvvValue = _cvv.value;
+        const cvvTest = /^\d{3}$/.test(cvvValue);
+        testInput(cvvTest, _cvv, e);
+        //console.log(cvvTest);
+    }
 });
 /**
  * Accessibility
