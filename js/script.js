@@ -56,11 +56,12 @@ register.addEventListener('change', (e) => {
     e.preventDefault();
     let dataCost = parseInt(e.target.getAttribute('data-cost'));
 
-    if(e.target.checked){
-        total += dataCost;
-    } else if( !e.target.checked ) {
-        total -= dataCost;
-    }
+    if(e.target.checked)
+        {
+            total += dataCost;
+        } else if( !e.target.checked ) {
+            total -= dataCost;
+        }
     activitiesCost.innerHTML = `Total: $${total}`
 })
 
@@ -68,19 +69,19 @@ register.addEventListener('change', (e) => {
 function validateActivities(e) 
 {
     const checkboxes = register.querySelectorAll('[type="checkbox"]:checked');
-    console.log(checkboxes.length);
-    if(checkboxes.length == 0){
-        //not valid
-        register.classList.add('not-valid');
-        register.classList.remove('valid');
-        register.lastElementChild.style.display = 'block';
-        e.preventDefault();
-       } else {
-        //Valid
-        register.classList.add('valid');
-        register.classList.remove('not-valid');
-        register.lastElementChild.style.display = 'none';
-       }
+    //console.log(checkboxes.length);
+        if(checkboxes.length == 0){
+            //not valid
+            register.classList.add('not-valid');
+            register.classList.remove('valid');
+            register.lastElementChild.style.display = 'block';
+            e.preventDefault();
+        } else {
+            //Valid
+            register.classList.add('valid');
+            register.classList.remove('not-valid');
+            register.lastElementChild.style.display = 'none';
+        }
 }
 
 /**
