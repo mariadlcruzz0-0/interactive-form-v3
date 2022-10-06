@@ -113,10 +113,13 @@ const _cvv = document.querySelector('#cvv');
 
 function testInput(input,_input) {
     if(!input){
+        //not valid
         _input.parentNode.classList.add('not-valid');
         _input.parentNode.classList.remove('valid');
         _input.parentNode.lastElementChild.style.display = 'block';
+        //_input.preventDefault();
        } else {
+        //Valid
         _input.parentNode.classList.add('valid');
         _input.parentNode.classList.remove('not-valid');
         _input.parentNode.lastElementChild.style.display = 'none';
@@ -124,7 +127,6 @@ function testInput(input,_input) {
 };
 
 _form.addEventListener('submit', (e) => {
-    e.preventDefault();
     //name validation
    let nameValue = _name.value;
    const nameTest = /^[^\s][a-zA-z|\s]*$/i.test(nameValue);
